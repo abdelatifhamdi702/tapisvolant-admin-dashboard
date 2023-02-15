@@ -1,0 +1,31 @@
+.headerOfRequestTable ul li a {
+  font-size: 1.4em;
+}
+.headerOfRequestTable ul li i {
+  padding-right: 6px;
+}
+.testimonial-area {
+  padding: 5rem 0;
+}
+.header-top-bar {
+  background-color: #f5f7fc;
+}
+.clientlogo-area img {
+  max-height: 3em;
+}
+.hide {
+  display: none;
+}
+.show-block {
+  display: block;
+}
+.profile-btn {
+  font-size: 2.3em;
+  font-family: 'Line Awesome Brands';
+  font-weight: 600;
+  text-decoration: none;
+  color: #b3b3b3;
+}
+.profile-btn:hover {
+  color: #287dfa;
+}

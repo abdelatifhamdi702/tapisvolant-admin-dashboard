@@ -1,0 +1,1138 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="author" content="TechyDevs" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Tapis volant</title>
+    <!-- Favicon -->
+    <link rel="icon" href="images/logo.jpg" />
+
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Template CSS Files -->
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/bootstrap-select.min.css" />
+    <link rel="stylesheet" href="css/line-awesome.css" />
+    <link rel="stylesheet" href="css/owl.carousel.min.css" />
+    <link rel="stylesheet" href="css/owl.theme.default.min.css" />
+    <link rel="stylesheet" href="css/jquery.fancybox.min.css" />
+    <link rel="stylesheet" href="css/daterangepicker.css" />
+    <link rel="stylesheet" href="css/animate.min.css" />
+    <link rel="stylesheet" href="css/animated-headline.css" />
+    <link rel="stylesheet" href="css/jquery-ui.css" />
+    <link rel="stylesheet" href="css/flag-icon.min.css" />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+
+  <body class="section-bg">
+    <!-- start cssload-loader -->
+    <div class="preloader" id="preloader">
+      <div class="loader">
+        <svg class="spinner" viewBox="0 0 50 50">
+          <circle
+            class="path"
+            cx="25"
+            cy="25"
+            r="20"
+            fill="none"
+            stroke-width="5"
+          ></circle>
+        </svg>
+      </div>
+    </div>
+    <!-- end cssload-loader -->
+
+    <!-- ================================
+       START DASHBOARD NAV
+================================= -->
+    <div class="sidebar-nav sidebar--nav">
+      <div class="sidebar-nav-body">
+        <div class="side-menu-close">
+          <i class="la la-times"></i>
+        </div>
+        <!-- end menu-toggler -->
+        <div class="author-content">
+          <div class="d-flex align-items-center">
+            <div class="author-img avatar-sm">
+              <img
+                src="images/team9.jpg"
+                class="ProfileAI"
+                alt="testimonial image"
+              />
+            </div>
+            <div class="author-bio">
+              <h4 class="author__title AgentnameAI">Royel travel agency</h4>
+            </div>
+          </div>
+        </div>
+        <div class="sidebar-menu-wrap">
+          <ul class="sidebar-menu toggle-menu list-items">
+            <li>
+              <a href="admin-dashboard.html"
+                ><i class="la la-dashboard mr-2"></i>Tableau de bord</a
+              >
+            </li>
+            <li>
+              <a href="admin-dashboard-travellers.html"
+                ><i class="la la-users mr-2 text-color-3"></i>Voyageurs</a
+              >
+            </li>
+            <li>
+              <a href="admin-dashboard-offers-requests.html"
+                ><i class="la la-hand-pointer mr-2 text-color-5"></i
+                >Réservations de séjours</a
+              >
+            </li>
+            <li>
+              <span class="side-menu-icon toggle-menu-icon">
+                <i class="la la-angle-down"></i>
+              </span>
+              <a href="admin-dashboard-destinations.html"
+                ><i class="la la-directions mr-2 text-color"></i>Destinations</a
+              >
+              <ul class="toggle-drop-menu">
+                <li>
+                  <a href="admin-dashboard-destinations-add.html"
+                    >Ajouter destination</a
+                  >
+                </li>
+              </ul>
+            </li>
+            <li class="page-active">
+              <span class="side-menu-icon toggle-menu-icon">
+                <i class="la la-angle-down"></i>
+              </span>
+              <a href="admin-dashboard-offers.html"
+                ><i class="la la-glass-cheers mr-2 text-color-6"></i>Séjours</a
+              >
+              <ul class="toggle-drop-menu">
+                <li>
+                  <a href="admin-dashboard-offers-add.html">Ajouter Séjour</a>
+                </li>
+              </ul>
+            </li>
+
+            <li>
+              <a href="admin-dashboard-settings.html"
+                ><i class="la la-cog mr-2 text-black"></i>Paramètres</a
+              >
+            </li>
+            <li>
+              <a href="admin-login.html" onclick="localStorage.clear();"
+                ><i class="la la-power-off mr-2 text-color-10"></i>Se
+                déconnecter</a
+              >
+            </li>
+          </ul>
+        </div>
+        <!-- end sidebar-menu-wrap -->
+      </div>
+    </div>
+    <!-- end sidebar-nav -->
+    <!-- ================================
+   END DASHBOARD NAV
+================================= -->
+
+    <!-- ================================
+START DASHBOARD AREA
+================================= -->
+    <section class="dashboard-area">
+      <div class="dashboard-nav dashboard--nav">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-lg-12">
+              <div class="menu-wrapper">
+                <div class="logo mr-5">
+                  <a href="index.html"
+                    ><img
+                      style="width: 160px; height: 80px"
+                      src="images/imageedit_42_9895999403-transformed.png"
+                      alt="logo"
+                  /></a>
+                  <div class="menu-toggler">
+                    <i class="la la-bars"></i>
+                    <i class="la la-times"></i>
+                  </div>
+                  <!-- end menu-toggler -->
+                  <div class="user-menu-open">
+                    <i class="la la-user"></i>
+                  </div>
+                  <!-- end user-menu-open -->
+                </div>
+                <div class="dashboard-search-box">
+                  <div class="contact-form-action">
+                    <form action="#">
+                      <div class="form-group mb-0">
+                        <input
+                          class="form-control"
+                          type="text"
+                          name="text"
+                          placeholder="Search"
+                        />
+                        <button class="search-btn">
+                          <i class="la la-search"></i>
+                        </button>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+                <div class="nav-btn ml-auto">
+                  <div
+                    class="notification-wrap d-flex align-items-center"
+                  ></div>
+                </div>
+                <!-- end nav-btn -->
+              </div>
+              <!-- end menu-wrapper -->
+            </div>
+            <!-- end col-lg-12 -->
+          </div>
+          <!-- end row -->
+        </div>
+        <!-- end container-fluid -->
+      </div>
+      <!-- end dashboard-nav -->
+      <div class="dashboard-content-wrap">
+        <div class="dashboard-bread dashboard--bread dashboard-bread-2">
+          <div class="container-fluid">
+            <div class="row align-items-center">
+              <div class="col-lg-6">
+                <div class="breadcrumb-content">
+                  <div class="section-heading">
+                    <h2 class="sec__title font-size-30 text-white">Séjours</h2>
+                  </div>
+                </div>
+                <!-- end breadcrumb-content -->
+              </div>
+              <!-- end col-lg-6 -->
+              <div class="col-lg-6">
+                <div class="breadcrumb-list text-right">
+                  <ul class="list-items">
+                    <li><a href="index.html" class="text-white">Accueil</a></li>
+                    <li>Tableau de bord</li>
+                    <li>Séjours</li>
+                  </ul>
+                </div>
+                <!-- end breadcrumb-list -->
+              </div>
+              <!-- end col-lg-6 -->
+            </div>
+            <!-- end row -->
+          </div>
+        </div>
+        <!-- end dashboard-bread -->
+        <div class="dashboard-main-content">
+          <div class="container-fluid">
+            <div class="row">
+              <div class="col-lg-8">
+                <div class="form-box">
+                  <div class="form-title-wrap" style="text-align: center">
+                    <button id="toggleBtn" class="theme-btn">
+                      Modifier le séjour
+                    </button>
+                  </div>
+                </div>
+                <div id="updateTourForm" class="form-box" style="display: none">
+                  <div class="form-content">
+                    <div class="contact-form-action">
+                      <form action="#" id="addOfferForm">
+                        <div class="row">
+                          <div class="col-lg-12 responsive-column">
+                            <div class="input-box">
+                              <label class="label-text">Titre</label>
+                              <div class="form-group">
+                                <span class="la la-tex form-icon"></span>
+                                <input
+                                  id="txtTitle"
+                                  name="title"
+                                  class="form-control"
+                                  type="text"
+                                  value=""
+                                />
+                              </div>
+                            </div>
+                          </div>
+                          <!-- end col-lg-12 -->
+                          <div class="col-lg-12">
+                            <div class="input-box">
+                              <label class="label-text mb-0 line-height-20"
+                                >Introduction</label
+                              >
+                              <p class="font-size-13 mb-3 line-height-20"></p>
+                              <div class="form-group">
+                                <span class="la la-pencil form-icon"></span>
+                                <textarea
+                                  id="txtIntroduction"
+                                  class="message-control form-control"
+                                  name="details"
+                                ></textarea>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col-lg-12 responsive-column">
+                            <div class="input-box">
+                              <label class="label-text">Durée par jours</label>
+                              <div class="form-group">
+                                <span class="la la-sun form-icon"></span>
+                                <input
+                                  id="txtDuration"
+                                  name="days"
+                                  class="form-control"
+                                  type="number"
+                                  placeholder="0"
+                                />
+                              </div>
+                            </div>
+                          </div>
+                          <!-- end col-lg-12 -->
+                          <div class="col-lg-12 responsive-column">
+                            <div class="input-box">
+                              <label class="label-text">Prix</label>
+                              <div class="form-group">
+                                <span class="la la-money-bill form-icon"></span>
+                                <input
+                                  id="txtPrice"
+                                  name="price"
+                                  placeholder=" 0 DZD"
+                                  class="form-control"
+                                  type="text"
+                                  value=""
+                                />
+                              </div>
+                            </div>
+                          </div>
+                          <!-- end col-lg-12 -->
+                          <div class="col-lg-12 responsive-column">
+                            <div class="input-box">
+                              <label class="label-text">Destination</label>
+                              <div class="form-group select-contain w-100">
+                                <select
+                                  class="select-contain-select"
+                                  id="selectDestination"
+                                ></select>
+                              </div>
+                            </div>
+                          </div>
+
+                          <div class="col-lg-12">
+                            <div class="input-box">
+                              <label class="label-text mb-0 line-height-20"
+                                >Description</label
+                              >
+                              <p class="font-size-13 mb-3 line-height-20"></p>
+                              <div class="form-group">
+                                <span class="la la-pencil form-icon"></span>
+                                <textarea
+                                  id="txtDescription"
+                                  class="message-control form-control"
+                                  name="details"
+                                ></textarea>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col-lg-12">
+                            <div class="input-box">
+                              <label class="label-text mb-0 line-height-20"
+                                >Handicaps:
+                              </label>
+                              <p class="font-size-13 mb-3 line-height-20"></p>
+                              <div
+                                id="dis_id0"
+                                class="form-check form-check-inline"
+                              >
+                                <input
+                                  class="form-check-input"
+                                  type="checkbox"
+                                  id="Handicapmoteur"
+                                  value="Handicap moteur"
+                                />
+                                <label
+                                  class="form-check-label"
+                                  for="Handicapmoteur"
+                                >
+                                  Handicap moteur
+                                </label>
+                              </div>
+                              <div
+                                id="dis_id1"
+                                class="form-check form-check-inline"
+                              >
+                                <input
+                                  class="form-check-input"
+                                  type="checkbox"
+                                  id="Handicapsensoriel"
+                                  value="Handicap sensoriel"
+                                />
+                                <label
+                                  class="form-check-label"
+                                  for="Handicapsensoriel"
+                                >
+                                  Handicap sensoriel
+                                </label>
+                              </div>
+                              <div
+                                id="dis_id2"
+                                class="form-check form-check-inline"
+                              >
+                                <input
+                                  class="form-check-input"
+                                  type="checkbox"
+                                  id="Handicapvisuel"
+                                  value="Handicap visuel"
+                                />
+                                <label
+                                  class="form-check-label"
+                                  for="Handicapvisuel"
+                                >
+                                  Handicap visuel
+                                </label>
+                              </div>
+                              <div
+                                id="dis_id3"
+                                class="form-check form-check-inline"
+                              >
+                                <input
+                                  class="form-check-input"
+                                  type="checkbox"
+                                  id="Handicapmental"
+                                  value="Handicap mental"
+                                />
+                                <label
+                                  class="form-check-label"
+                                  for="Handicapmental"
+                                >
+                                  Handicap mental
+                                </label>
+                              </div>
+                              <div
+                                id="dis_id4"
+                                class="form-check form-check-inline"
+                              >
+                                <input
+                                  class="form-check-input"
+                                  type="checkbox"
+                                  id="Handicapcognitif"
+                                  value="Handicap cognitif"
+                                />
+                                <label
+                                  class="form-check-label"
+                                  for="Handicapcognitif"
+                                >
+                                  Handicap cognitif
+                                </label>
+                              </div>
+                              <div
+                                id="dis_id5"
+                                class="form-check form-check-inline"
+                              >
+                                <input
+                                  class="form-check-input"
+                                  type="checkbox"
+                                  id="Handicappsychique"
+                                  value="Handicap psychique"
+                                />
+                                <label
+                                  class="form-check-label"
+                                  for="Handicappsychique"
+                                >
+                                  Handicap psychique
+                                </label>
+                              </div>
+                            </div>
+                          </div>
+                          <br />
+                          <br />
+                          <div class="input-box">
+                            <div class="form-group">
+                              <label class="label-text"
+                                >Upload image principale de séjour</label
+                              ><br />
+                              <img
+                                id="imgtourImg"
+                                style="height: 180px; width: 180px"
+                                src=""
+                              />
+                            </div>
+                          </div>
+
+                          <p class="font-size-13 mb-3 line-height-20"></p>
+                          <div class="col-lg-12">
+                            <div
+                              class="user-profile-action d-flex align-items-center pb-4"
+                            >
+                              <div class="upload-btn-box">
+                                <div
+                                  class="file-upload-wrap file-upload-wrap-2"
+                                >
+                                  <input
+                                    id="tourImg"
+                                    type="file"
+                                    multiple
+                                    name="offerImages"
+                                    class="file-upload-input with-preview"
+                                  />
+                                  <span class="file-upload-text"
+                                    ><i class="la la-upload mr-2"></i>Upload
+                                    Image</span
+                                  >
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <br />
+                          <div class="input-box">
+                            <div class="form-group">
+                              <label class="label-text"
+                                >Upload image couverture de séjour</label
+                              ><br />
+                              <img
+                                id="imgtourCoverImg"
+                                style="height: 180px; width: 180px"
+                                src=""
+                              />
+                            </div>
+                          </div>
+
+                          <p class="font-size-13 mb-3 line-height-20"></p>
+                          <div class="col-lg-12">
+                            <div
+                              class="user-profile-action d-flex align-items-center pb-4"
+                            >
+                              <div class="upload-btn-box">
+                                <div
+                                  class="file-upload-wrap file-upload-wrap-2"
+                                >
+                                  <input
+                                    id="tourCoverImg"
+                                    type="file"
+                                    multiple
+                                    name="offerImages"
+                                    class="file-upload-input with-preview"
+                                  />
+                                  <span class="file-upload-text"
+                                    ><i class="la la-upload mr-2"></i>Upload
+                                    Image</span
+                                  >
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <!-- end col-lg-12 -->
+                          <div class="col-lg-12">
+                            <div class="btn-box">
+                              <button
+                                class="theme-btn"
+                                type="button"
+                                onclick="addDest(); return false"
+                              >
+                                Modifier
+                              </button>
+                            </div>
+                          </div>
+                          <!-- end col-lg-12 -->
+                        </div>
+
+                        <!-- end row -->
+                      </form>
+                    </div>
+                  </div>
+                </div>
+                <div class="form-box">
+                  <div class="form-title-wrap" style="text-align: center">
+                    <button id="toggleBtnActivity" class="theme-btn">
+                      Ajouter une activité
+                    </button>
+                  </div>
+                </div>
+                <div
+                  id="addActivityForm"
+                  class="form-box"
+                  style="display: none"
+                >
+                  <div class="form-content">
+                    <div class="contact-form-action">
+                      <div class="row">
+                        <div class="col-lg-12 responsive-column">
+                          <div class="input-box">
+                            <label class="label-text">Titre</label>
+                            <div class="form-group">
+                              <span class="la la-flag form-icon"></span>
+                              <input
+                                id="txtTitleActivity"
+                                name="country"
+                                class="form-control"
+                                type="text"
+                                required
+                              />
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-lg-12">
+                          <div class="input-box">
+                            <label class="label-text mb-0 line-height-20"
+                              >Description</label
+                            >
+                            <p class="font-size-13 mb-3 line-height-20"></p>
+                            <div class="form-group">
+                              <span class="la la-pencil form-icon"></span>
+                              <textarea
+                                id="txtDescriptionActivity"
+                                class="message-control form-control"
+                                name="details"
+                              ></textarea>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-lg-12">
+                          <label class="label-text">Upload une image</label>
+                          <p class="font-size-13 mb-3 line-height-20"></p>
+                        </div>
+                        <div class="col-lg-12">
+                          <div
+                            class="user-profile-action d-flex align-items-center pb-4"
+                          >
+                            <div class="upload-btn-box">
+                              <div class="file-upload-wrap file-upload-wrap-2">
+                                <input
+                                  id="activityImg"
+                                  type="file"
+                                  name="destinationImages"
+                                  class="file-upload-input with-preview"
+                                />
+                                <span class="file-upload-text"
+                                  ><i class="la la-upload mr-2"></i>Upload
+                                  Image</span
+                                >
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <!-- end col-lg-12 -->
+                        <div class="col-lg-12">
+                          <div class="btn-box">
+                            <button
+                              onclick="addAct();return false"
+                              class="theme-btn"
+                              type="button"
+                            >
+                              Ajouter
+                            </button>
+                          </div>
+                        </div>
+                        <!-- end col-lg-12 -->
+                      </div>
+
+                      <!-- end row -->
+                    </div>
+                  </div>
+                </div>
+                <div class="form-box">
+                  <div class="form-title-wrap" style="text-align: center">
+                    <button id="toggleBtnUpdateActivity" class="theme-btn">
+                      Modifier les activités
+                    </button>
+                  </div>
+                </div>
+                <div
+                  id="updateActivityForm"
+                  class="form-box"
+                  style="display: none"
+                >
+                  <div class="form-content">
+                    <div class="contact-form-action" id="activities">
+                      <div class="row">
+                        <div class="col-lg-12 responsive-column">
+                          <div class="input-box">
+                            <label class="label-text">Titre</label>
+                            <div class="form-group">
+                              <span class="la la-flag form-icon"></span>
+                              <input
+                                id="country"
+                                name="country"
+                                class="form-control"
+                                type="text"
+                                required
+                              />
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-lg-12">
+                          <div class="input-box">
+                            <label class="label-text mb-0 line-height-20"
+                              >Description</label
+                            >
+                            <p class="font-size-13 mb-3 line-height-20"></p>
+                            <div class="form-group">
+                              <span class="la la-pencil form-icon"></span>
+                              <textarea
+                                id="txtDescription"
+                                class="message-control form-control"
+                                name="details"
+                              ></textarea>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-lg-12">
+                          <div class="input-box">
+                            <div class="form-group">
+                              <img
+                                id="PassportPI"
+                                style="height: 180px; width: 180px"
+                                src=""
+                              />
+                            </div>
+                          </div>
+                          <label class="label-text">Upload une image</label>
+                          <p class="font-size-13 mb-3 line-height-20"></p>
+                        </div>
+                        <div class="col-lg-12">
+                          <div
+                            class="user-profile-action d-flex align-items-center pb-4"
+                          >
+                            <div class="upload-btn-box">
+                              <div class="file-upload-wrap file-upload-wrap-2">
+                                <input
+                                  id="destinationImg"
+                                  type="file"
+                                  name="destinationImages"
+                                  class="file-upload-input with-preview"
+                                />
+                                <span class="file-upload-text"
+                                  ><i class="la la-upload mr-2"></i>Upload
+                                  Image</span
+                                >
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <!-- end col-lg-12 -->
+                        <div class="col-lg-12">
+                          <div class="btn-box">
+                            <button
+                              onclick="addDest();return false"
+                              class="theme-btn"
+                              type="button"
+                            >
+                              Modifier
+                            </button>
+                          </div>
+                        </div>
+                        <!-- end col-lg-12 -->
+                      </div>
+
+                      <!-- end row -->
+                    </div>
+                  </div>
+                </div>
+
+                <!-- end form-box -->
+              </div>
+              <!-- end col-lg-12 -->
+            </div>
+            <!-- end row -->
+            <div class="border-top mt-4"></div>
+            <div class="row align-items-center">
+              <div class="col-lg-7">
+                <div class="copy-right padding-top-30px">
+                  <p class="copy__desc">
+                    Copyright &copy; 2023 Tapis Volant. All Rights Reserved
+                  </p>
+                </div>
+                <!-- end copy-right -->
+              </div>
+              <!-- end col-lg-7 -->
+              <div class="col-lg-5">
+                <div class="copy-right-content text-right padding-top-30px">
+                  <ul class="social-profile">
+                    <li>
+                      <a href="#"><i class="lab la-facebook-f"></i></a>
+                    </li>
+                    <li>
+                      <a href="#"><i class="lab la-twitter"></i></a>
+                    </li>
+                    <li>
+                      <a href="#"><i class="lab la-instagram"></i></a>
+                    </li>
+                    <li>
+                      <a href="#"><i class="lab la-linkedin-in"></i></a>
+                    </li>
+                  </ul>
+                </div>
+                <!-- end copy-right-content -->
+              </div>
+              <!-- end col-lg-5 -->
+            </div>
+            <!-- end row -->
+          </div>
+          <!-- end container-fluid -->
+        </div>
+        <!-- end dashboard-main-content -->
+      </div>
+      <!-- end dashboard-content-wrap -->
+    </section>
+    <!-- end dashboard-area -->
+    <!-- ================================
+    END DASHBOARD AREA
+================================= -->
+
+    <!-- start scroll top -->
+    <div id="back-to-top">
+      <i class="la la-angle-up" title="Go top"></i>
+    </div>
+    <!-- end scroll top -->
+
+    <!-- Template JS Files -->
+    <script src="js/jquery-3.4.1.min.js"></script>
+    <script src="js/jquery-ui.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/bootstrap-select.min.js"></script>
+    <script src="js/moment.min.js"></script>
+    <script src="js/daterangepicker.js"></script>
+    <script src="js/owl.carousel.min.js"></script>
+    <script src="js/jquery.fancybox.min.js"></script>
+    <script src="js/jquery.countTo.min.js"></script>
+    <script src="js/animated-headline.js"></script>
+    <script src="js/jquery.multi-file.min.js"></script>
+    <script src="js/jquery.ripples-min.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/bootbox.min.js"></script>
+    <script>
+      async function updateAct(id, index) {
+        let headersList = {
+          Authorization: 'Bearer ' + localStorage.getItem('admintoken'),
+          'Content-Type': 'application/json',
+        }
+        var queryString = decodeURIComponent(window.location.search)
+        queryString = queryString.substring(1)
+        let bodyContent = JSON.stringify({
+          id: id,
+          title: $('#txtTitleActivity' + index).val() + '',
+          description: $('#txtDescriptionActivity' + index).val() + '',
+        })
+        let response = await fetch('http://localhost:3000/activity', {
+          method: 'PATCH',
+          body: bodyContent,
+          headers: headersList,
+        })
+
+        const res = await response.json()
+
+        let headersList2 = {
+          authorization: 'Bearer ' + localStorage.getItem('admintoken'),
+        }
+        let formData = new FormData()
+        let activityImage = document.getElementById('activityImg' + index)
+          .files[0]
+        console.log(res.data.id)
+        console.log(activityImage)
+        formData.append('id', res.data.id)
+        formData.append('imgUrl', activityImage)
+        let response2 = await fetch('http://localhost:3000/upload/activity', {
+          method: 'POST',
+          headers: headersList2,
+          body: formData,
+        })
+
+        const res2 = await response2.json()
+        console.log(res2)
+
+        if (res2.data) bootbox.alert("L'activité est mise a jour avec succès")
+      }
+
+      window.onbeforeunload = function () {
+        return 'Dude, are you sure you want to leave? Think of the kittens!'
+      }
+
+      $('#toggleBtn').click(async (e) => {
+        $('#updateTourForm').slideToggle()
+      })
+      $('#toggleBtnActivity').click(async (e) => {
+        $('#addActivityForm').slideToggle()
+      })
+      $('#toggleBtnUpdateActivity').click(async (e) => {
+        $('#updateActivityForm').slideToggle()
+      })
+
+      async function addAct() {
+        let headersList = {
+          Authorization: 'Bearer ' + localStorage.getItem('admintoken'),
+          'Content-Type': 'application/json',
+        }
+        var queryString = decodeURIComponent(window.location.search)
+        queryString = queryString.substring(1)
+        let bodyContent = JSON.stringify({
+          tourId: queryString,
+          title: $('#txtTitleActivity').val() + '',
+          description: $('#txtDescriptionActivity').val() + '',
+        })
+        let response = await fetch('http://localhost:3000/activity', {
+          method: 'POST',
+          body: bodyContent,
+          headers: headersList,
+        })
+
+        const res = await response.json()
+
+        let headersList2 = {
+          authorization: 'Bearer ' + localStorage.getItem('admintoken'),
+        }
+        let formData = new FormData()
+        let activityImage = document.getElementById('activityImg').files[0]
+        console.log(res.data.id)
+        console.log(activityImage)
+        formData.append('id', res.data.id)
+        formData.append('imgUrl', activityImage)
+        console.log(formData)
+        let response2 = await fetch('http://localhost:3000/upload/activity', {
+          method: 'POST',
+          headers: headersList2,
+          body: formData,
+        })
+
+        const res2 = await response2.json()
+        console.log(res2)
+
+        if (res2.data) bootbox.alert("L'activité est ajoutée avec succès")
+      }
+
+      async function addDest() {
+        let DisabilityCategory = ''
+        if (document.getElementById('Handicapmoteur').checked) {
+          DisabilityCategory += 'Handicap moteur, '
+        }
+        if (document.getElementById('Handicapsensoriel').checked) {
+          DisabilityCategory += 'Handicap sensoriel, '
+        }
+        if (document.getElementById('Handicapvisuel').checked) {
+          DisabilityCategory += 'Handicap visuel, '
+        }
+        if (document.getElementById('Handicapmental').checked) {
+          DisabilityCategory += 'Handicap mental, '
+        }
+        if (document.getElementById('Handicapcognitif').checked) {
+          DisabilityCategory += 'Handicap cognitif, '
+        }
+        if (document.getElementById('Handicappsychique').checked) {
+          DisabilityCategory += 'Handicap psychique, '
+        }
+        let headersList = {
+          Authorization: 'Bearer ' + localStorage.getItem('admintoken'),
+          'Content-Type': 'application/json',
+        }
+        var queryString = decodeURIComponent(window.location.search)
+        var tourId = queryString.substring(1)
+        let bodyContent = JSON.stringify({
+          id: tourId,
+          destinationId: $('#selectDestination').find(':selected').val(),
+          title: $('#txtTitle').val(),
+          description: $('#txtDescription').val(),
+          duration: parseInt($('#txtDuration').val()),
+          price: $('#txtPrice').val(),
+          totalReview: parseInt(0),
+          rating: parseFloat(3.5),
+          acceptedDisabilities: DisabilityCategory,
+          introduction: $('#txtIntroduction').val(),
+        })
+        let response = await fetch('http://localhost:3000/tour', {
+          method: 'PATCH',
+          body: bodyContent,
+          headers: headersList,
+        })
+
+        const res = await response.json()
+        let headersList2 = {
+          authorization: 'Bearer ' + localStorage.getItem('admintoken'),
+        }
+        let formData1 = new FormData()
+        let formData2 = new FormData()
+        let tourImage = document.getElementById('tourImg').files[0]
+        let tourCoverImage = document.getElementById('tourCoverImg').files[0]
+        formData1.append('id', res.data.id)
+        formData1.append('imgUrl', tourImage)
+        formData2.append('id', res.data.id)
+        formData2.append('coverImgUrl', tourCoverImage)
+
+        let response2 = await fetch('http://localhost:3000/upload/tour', {
+          method: 'POST',
+          headers: headersList2,
+          body: formData1,
+        })
+
+        const res2 = await response2.json()
+        console.log(res2)
+
+        let response3 = await fetch('http://localhost:3000/upload/tour/cover', {
+          method: 'POST',
+          headers: headersList2,
+          body: formData2,
+        })
+
+        const res3 = await response3.json()
+        console.log(res3)
+        if (res2.data && res3.data)
+          bootbox.alert('Le séjour est ajoutée avec succès')
+      }
+
+      $(document).ready(async () => {
+        try {
+          const response = await fetch(`http://localhost:3000/destination`)
+          let res = await response.json()
+          for (i = 0; i < res.data.length; i++) {
+            var option = $('<option></option>')
+              .attr('value', res.data[i].id)
+              .text(res.data[i].city)
+            $('#selectDestination').append(option)
+          }
+          var queryString = decodeURIComponent(window.location.search)
+          queryString = queryString.substring(8)
+          let headersList = {
+            authorization: 'Bearer ' + localStorage.getItem('admintoken'),
+          }
+
+          const res6 = await fetch(
+            `http://localhost:3000/Fu4mHX5QN6Jd2mpDIMqsd5cMfdLe/me`,
+            { headers: headersList }
+          )
+          let response6 = await res6.json()
+
+          $('.AgentnameAI').html(response6.data.username)
+          var path = response6.data.profileImg
+          var path2 = path.replace(/\\/g, '/')
+          $('.ProfileAI').attr('src', 'http://' + path2)
+          var queryString = decodeURIComponent(window.location.search)
+          queryString = queryString.substring(1)
+
+          const res2 = await fetch(
+            `http://localhost:3000/tour/one/` + queryString,
+            { headers: headersList }
+          )
+          let response2 = await res2.json()
+          let activitiesList = response2.data.Activities
+          $('#txtTitle').val(response2.data.title)
+          $('#txtDescription').val(response2.data.description)
+          $('#txtDuration').val(response2.data.duration)
+          $('#txtPrice').val(response2.data.price)
+          let DisabilityCategory = response2.data.acceptedDisabilities
+          let Disabilities = DisabilityCategory.split(', ')
+          //console.log(Disabilities)
+          for (d in Disabilities) {
+            if (d != Disabilities.length - 1) {
+              Disabilities[d] = Disabilities[d].replace(' ', '')
+              document.getElementById(Disabilities[d]).checked = true
+            }
+          }
+          $('#txtIntroduction').val(response2.data.introduction)
+          var path = response2.data.imgUrl
+          var path2 = path.replace(/\\/g, '/')
+          $('#imgtourImg').attr('src', 'http://' + path2)
+          path = response2.data.coverImgUrl
+          path2 = path.replace(/\\/g, '/')
+          $('#imgtourCoverImg').attr('src', 'http://' + path2)
+
+          $('#selectDestination').val(response2.data.destinationId).change()
+
+          var activitiesDiv = ''
+          for (var index in activitiesList) {
+            var path = activitiesList[index].imgUrl
+            var path2 = path.replace(/\\/g, '/')
+            activitiesDiv += `
+            <div class="row">
+                        <div class="col-lg-12 responsive-column">
+                          <div class="input-box">
+                            <label class="label-text">Titre</label>
+                            <div class="form-group">
+                              <span class="la la-flag form-icon"></span>
+                              <input
+                                id="txtTitleActivity${index}"
+                                name="country"
+                                class="form-control"
+                                type="text"
+                                value= "${activitiesList[index].title}"
+                                required
+                              />
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-lg-12">
+                          <div class="input-box">
+                            <label class="label-text mb-0 line-height-20"
+                              >Description</label
+                            >
+                            <p class="font-size-13 mb-3 line-height-20"></p>
+                            <div class="form-group">
+                              <span class="la la-pencil form-icon"></span>
+                              <textarea
+                                id="txtDescriptionActivity${index}"
+                                class="message-control form-control"
+                                name="details"
+                              >${activitiesList[index].description}</textarea>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-lg-12">
+                          <div class="input-box">
+                            <div class="form-group">
+                              <img
+                                id="PassportPI"
+                                style="height: 180px; width: 180px"
+                                src="${'http://' + path2}"
+                              />
+                            </div>
+                          </div>
+                          <label class="label-text">Upload une image</label>
+                          <p class="font-size-13 mb-3 line-height-20"></p>
+                        </div>
+                        <div class="col-lg-12">
+                          <div
+                            class="user-profile-action d-flex align-items-center pb-4"
+                          >
+                            <div class="upload-btn-box">
+                              <div class="file-upload-wrap file-upload-wrap-2">
+                                <input
+                                  id="activityImg${index}"
+                                  type="file"
+                                  name="destinationImages"
+                                  class="file-upload-input with-preview"
+                                />
+                                <span class="file-upload-text"
+                                  ><i class="la la-upload mr-2"></i>Upload
+                                  Image</span
+                                >
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <!-- end col-lg-12 -->
+                        <div class="col-lg-12">
+                          <div class="btn-box">
+                            <button
+                              onclick="updateAct('${
+                                activitiesList[index].id
+                              }','${index}');return false"
+                              class="theme-btn"
+                              type="button"
+                            >
+                              Modifier
+                            </button>
+                          </div>
+                        </div>
+                        <!-- end col-lg-12 -->
+                      </div>
+            `
+          }
+          console.log(activitiesList)
+          document.getElementById('activities').innerHTML = activitiesDiv
+        } catch (error) {
+          console.log(error)
+        }
+      })
+    </script>
+  </body>
+</html>
