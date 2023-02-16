@@ -116,6 +116,20 @@
                   <a href="admin-dashboard-offers-add.html">Ajouter Séjour</a>
                 </li>
               </ul>
+            </li><li>
+              <span class="side-menu-icon toggle-menu-icon">
+                <i class="la la-angle-down"></i>
+              </span>
+              <a href="admin-dashboard-disability.html"
+                ><i class="la la-blind mr-2 text-color-11"></i>Handicaps</a
+              >
+              <ul class="toggle-drop-menu">
+                <li>
+                  <a href="admin-dashboard-disability-add.html"
+                    >Ajouter handicap</a
+                  >
+                </li>
+              </ul>
             </li>
              
             <li>
@@ -255,7 +269,7 @@ START DASHBOARD AREA
                                 <img
                                   id="PassportPI"
                                   style="height: 180px; width: 180px"
-                                  src="images/passportTest.png"
+                                  src=""
                                 />
                               </td>
                             </tr>
@@ -332,6 +346,28 @@ START DASHBOARD AREA
                             </td>
                             <td>:</td>
                             <td id="DateOfBirthPI">03 Jun 1990</td>
+                          </tr>
+                          <tr>
+                            <td class="pl-0">
+                              <div class="table-content">
+                                <h3 class="title font-weight-medium">
+                                  Adresse
+                                </h3>
+                              </div>
+                            </td>
+                            <td>:</td>
+                            <td id="Addresse">.</td>
+                          </tr>
+                          <tr>
+                            <td class="pl-0">
+                              <div class="table-content">
+                                <h3 class="title font-weight-medium">
+                                  Handicaps
+                                </h3>
+                              </div>
+                            </td>
+                            <td>:</td>
+                            <td id="Handicaps">.</td>
                           </tr>
                         </tbody>
                       </table>
@@ -410,19 +446,28 @@ START DASHBOARD AREA
     <script src="js/jquery.ripples-min.js"></script>
     <script src="js/axios.min.js"></script>
     <script src="js/main.js"></script>
-    <script src="js/custom.js"></script>
     <script>
+      async function getAccessToken() {
+        let headersList = {
+          authorization: 'Bearer ' + localStorage.getItem('adminrefreshtoken'),
+        }
 
+        const res6 = await fetch(`http://localhost:3000/refresh/token`, {
+          headers: headersList,
+        })
+        let response6 = await res6.json()
+
+        return response6.data.accessToken
+      }
       $(document).ready(async () => {
-        try {var queryString = decodeURIComponent(window.location.search)
-          queryString = queryString.substring(8)
+        try {
+          let accessToken = await getAccessToken()
           let headersList = {
-            authorization: 'Bearer ' + localStorage.getItem('admintoken'),
+            authorization: 'Bearer ' + accessToken,
           }
 
           const res6 = await fetch(
-            `http://localhost:3000/Fu4mHX5QN6Jd2mpDIMqsd5cMfdLe/me` +
-              queryString,
+            `http://localhost:3000/Fu4mHX5QN6Jd2mpDIMqsd5cMfdLe/me`,
             { headers: headersList }
           )
           let response6 = await res6.json()
@@ -457,12 +502,17 @@ START DASHBOARD AREA
             'src',
             'http://' + path2
           )
-          /*const res = await authAxios.get('/accounts/agents/agent')
-          $('.AgentnameAI').html(res.data.agent.agentName)
-          $('.ProfileAI').attr(
-            'src',
-            'http://localhost:3000' + res.data.agent.profileImgUrl
-          )*/
+          
+        let adresses = ''
+        for (var x in response.data[0].Profile.Addresses) {
+          adresses += response.data[0].Profile.Addresses[x].address + '<br />'
+        }
+        document.getElementById('Addresse').innerHTML = adresses
+        let handicaps = ''
+        for (var h in response.data[0].Profile.DisabilityCategories) {
+          handicaps += response.data[0].Profile.DisabilityCategories[h].type + '<br />'
+        }
+        document.getElementById('Handicaps').innerHTML = handicaps
         } catch (error) {
           console.log(error)
         }

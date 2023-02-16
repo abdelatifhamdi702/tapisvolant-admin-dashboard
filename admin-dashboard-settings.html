@@ -113,6 +113,21 @@
             </li>
           </ul>
         </li>
+        <li>
+          <span class="side-menu-icon toggle-menu-icon">
+            <i class="la la-angle-down"></i>
+          </span>
+          <a href="admin-dashboard-disability.html"
+            ><i class="la la-blind mr-2 text-color-11"></i>Handicaps</a
+          >
+          <ul class="toggle-drop-menu">
+            <li>
+              <a href="admin-dashboard-disability-add.html"
+                >Ajouter handicap</a
+              >
+            </li>
+          </ul>
+        </li>
         <li class="page-active">
           <a href="admin-dashboard-settings.html"
             ><i class="la la-cog mr-2 text-black"></i>Paramètres</a
@@ -384,10 +399,22 @@ START DASHBOARD AREA
     <script src="js/main.js"></script>
     <script src="js/bootbox.min.js"></script>
     <script>
+      async function getAccessToken() {
+        let headersList = {
+          authorization: 'Bearer ' + localStorage.getItem('adminrefreshtoken'),
+        }
 
+        const res6 = await fetch(`http://localhost:3000/refresh/token`, {
+          headers: headersList,
+        })
+        let response6 = await res6.json()
+
+        return response6.data.accessToken
+      }
 const editAuth = async () => {
+  let accessToken = await getAccessToken()
   let headersList = {
-    authorization: 'Bearer ' + localStorage.getItem('admintoken'),
+    authorization: 'Bearer ' + accessToken,
     'Content-Type': 'application/json',
     'Cross-Origin-Resource-Policy': 'cross-origin',
   }
@@ -433,8 +460,9 @@ const submitEditAuthForm = async () => {
   }
 }
 const uploadProfileImgReq = async () => {
+  let accessToken = await getAccessToken()
   let headersList = {
-    authorization: 'Bearer ' + localStorage.getItem('admintoken'),
+    authorization: 'Bearer ' + accessToken,
   }
   let formData = new FormData()
 
@@ -466,8 +494,9 @@ $(document).ready(async () => {
   try {
           var queryString = decodeURIComponent(window.location.search)
           queryString = queryString.substring(8)
+          let accessToken = await getAccessToken()
           let headersList = {
-    authorization: 'Bearer ' + localStorage.getItem('admintoken'),
+    authorization: 'Bearer ' + accessToken,
   }
 
      const res = await fetch(

@@ -117,6 +117,21 @@
                 </li>
               </ul>
             </li>
+            <li>
+              <span class="side-menu-icon toggle-menu-icon">
+                <i class="la la-angle-down"></i>
+              </span>
+              <a href="admin-dashboard-disability.html"
+                ><i class="la la-blind mr-2 text-color-11"></i>Handicaps</a
+              >
+              <ul class="toggle-drop-menu">
+                <li>
+                  <a href="admin-dashboard-disability-add.html"
+                    >Ajouter handicap</a
+                  >
+                </li>
+              </ul>
+            </li>
 
             <li>
               <a href="admin-dashboard-settings.html"
@@ -605,7 +620,20 @@ START DASHBOARD AREA
       /*window.onbeforeunload = function () {
         return 'Dude, are you sure you want to leave? Think of the kittens!'
       }*/
+      async function getAccessToken() {
+        let headersList = {
+          authorization: 'Bearer ' + localStorage.getItem('adminrefreshtoken'),
+        }
+
+        const res6 = await fetch(`http://localhost:3000/refresh/token`, {
+          headers: headersList,
+        })
+        let response6 = await res6.json()
+
+        return response6.data.accessToken
+      }
       async function addDest() {
+        let accessToken = await getAccessToken()
         let DisabilityCategory = ''
         if (document.getElementById('Handicapmoteur').checked) {
           DisabilityCategory += 'Handicap moteur, '
@@ -626,7 +654,7 @@ START DASHBOARD AREA
           DisabilityCategory += 'Handicap psychique, '
         }
         let headersList = {
-          Authorization: 'Bearer ' + localStorage.getItem('admintoken'),
+          Authorization: 'Bearer ' + accessToken,
           'Content-Type': 'application/json',
         }
         let bodyContent = JSON.stringify({
@@ -650,7 +678,7 @@ START DASHBOARD AREA
         console.log(res)
 
         let headersList2 = {
-          authorization: 'Bearer ' + localStorage.getItem('admintoken'),
+          authorization: 'Bearer ' + accessToken,
         }
         let formData1 = new FormData()
         let formData2 = new FormData()
@@ -684,12 +712,7 @@ START DASHBOARD AREA
 
       $(document).ready(async () => {
         try {
-          let headersList = {
-            authorization: 'Bearer ' + localStorage.getItem('admintoken'),
-          }
-          const response = await fetch(`http://localhost:3000/destination`, {
-            headers: headersList,
-          })
+          const response = await fetch(`http://localhost:3000/destination`)
           let res = await response.json()
           console.log(res)
           $('#selectDestination').empty()
@@ -699,12 +722,12 @@ START DASHBOARD AREA
               .text(res.data[i].city)
             $('#selectDestination').append(option)
           }
-          var queryString = decodeURIComponent(window.location.search)
-          queryString = queryString.substring(8)
-
+          let accessToken = await getAccessToken()
+          let headersList = {
+            authorization: 'Bearer ' + accessToken,
+          }
           const res6 = await fetch(
-            `http://localhost:3000/Fu4mHX5QN6Jd2mpDIMqsd5cMfdLe/me` +
-              queryString,
+            `http://localhost:3000/Fu4mHX5QN6Jd2mpDIMqsd5cMfdLe/me`,
             { headers: headersList }
           )
           let response6 = await res6.json()

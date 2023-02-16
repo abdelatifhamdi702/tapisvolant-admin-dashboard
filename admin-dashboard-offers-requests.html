@@ -117,6 +117,21 @@
                 </li>
               </ul>
             </li>
+            <li>
+              <span class="side-menu-icon toggle-menu-icon">
+                <i class="la la-angle-down"></i>
+              </span>
+              <a href="admin-dashboard-disability.html"
+                ><i class="la la-blind mr-2 text-color-11"></i>Handicaps</a
+              >
+              <ul class="toggle-drop-menu">
+                <li>
+                  <a href="admin-dashboard-disability-add.html"
+                    >Ajouter handicap</a
+                  >
+                </li>
+              </ul>
+            </li>
 
             <li>
               <a href="admin-dashboard-settings.html"
@@ -247,7 +262,9 @@ START DASHBOARD AREA
                             <th scope="col">Nom d'utilisateur</th>
                             <th scope="col">Date</th>
                             <th scope="col">Prix</th>
+                            <th scope="col">Status</th>
                             <th scope="col">Image</th>
+                            <th scope="col">Action</th>
                           </tr>
                         </thead>
                         <tbody id="offersList"></tbody>
@@ -336,10 +353,70 @@ START DASHBOARD AREA
     <script src="js/main.js"></script>
     <script src="js/bootbox.min.js"></script>
     <script>
+      async function getAccessToken() {
+        let headersList = {
+          authorization: 'Bearer ' + localStorage.getItem('adminrefreshtoken'),
+        }
+
+        const res6 = await fetch(`http://localhost:3000/refresh/token`, {
+          headers: headersList,
+        })
+        let response6 = await res6.json()
+
+        return response6.data.accessToken
+      }
+      async function acceptOffer(tourId, authId) {
+        let accessToken = await getAccessToken()
+        let headersList = {
+          Authorization: 'Bearer ' + accessToken,
+          'Content-Type': 'application/json',
+        }
+        let bodyContent = JSON.stringify({
+          tourId: tourId,
+          authId: authId,
+          status: 'Accepté',
+        })
+        let response = await fetch('http://localhost:3000/booking', {
+          method: 'PATCH',
+          body: bodyContent,
+          headers: headersList,
+        })
+
+        const res = await response.json()
+
+        console.log(res)
+
+        if (res.data) bootbox.alert('la demande a été accepté avec succès')
+      }
+
+      async function refuseOffer(tourId, authId) {
+        let accessToken = await getAccessToken()
+        let headersList = {
+          Authorization: 'Bearer ' + accessToken,
+          'Content-Type': 'application/json',
+        }
+        let bodyContent = JSON.stringify({
+          tourId: tourId,
+          authId: authId,
+          status: 'Refusé',
+        })
+        let response = await fetch('http://localhost:3000/booking', {
+          method: 'PATCH',
+          body: bodyContent,
+          headers: headersList,
+        })
+
+        const res = await response.json()
+
+        console.log(res)
+
+        if (res.data) bootbox.alert('la demande a été refusé avec succès')
+      }
       $(document).ready(async () => {
         try {
+          let accessToken = await getAccessToken()
           let headersList = {
-            authorization: 'Bearer ' + localStorage.getItem('admintoken'),
+            authorization: 'Bearer ' + accessToken,
           }
 
           const res6 = await fetch(
@@ -375,9 +452,23 @@ START DASHBOARD AREA
               res.data[i].Tour.createdAt.substring(0, 10) +
               '</td> <td>' +
               res.data[i].Tour.price +
+              '</td> <td>' +
+              res.data[i].status +
               '</td> <td><a href="' +
               path2 +
-              '">Reçu</a> </td></tr>'
+              '">Reçu</a> </td><td> <div class="table-content"> <a href="#" onclick="acceptOffer(' +
+              "'" +
+              res.data[i].tourId +
+              "','" +
+              res.data[i].authId +
+              "'" +
+              ');" class="theme-btn theme-btn-small mr-2" data-toggle="tooltip" data-placement="top" title="Accepter" ><i class="la la-check"></i ></a> <a href="#" onclick="refuseOffer(' +
+              "'" +
+              res.data[i].tourId +
+              "','" +
+              res.data[i].authId +
+              "'" +
+              ');" class="theme-btn theme-btn-small mr-2" data-toggle="tooltip" data-placement="top" title="Refuser"><i class="la la-times"></i ></a> </div> </td></tr>'
           }
         } catch (error) {
           bootbox.alert(error)

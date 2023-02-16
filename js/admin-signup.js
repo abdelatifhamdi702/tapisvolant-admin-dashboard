@@ -73,6 +73,7 @@ const signup = async () => {
     console.log(res)
     if (res.data) {
       localStorage.setItem('admintoken', res.data.tokens.accessToken)
+      localStorage.setItem('adminrefreshtoken', res.data.tokens.refreshToken)
       localStorage.setItem('adminstatus', true)
       document.location.href = './admin-dashboard.html'
     }

@@ -104,6 +104,20 @@
                   <a href="admin-dashboard-offers-add.html">Ajouter Séjour</a>
                 </li>
               </ul>
+            </li><li>
+              <span class="side-menu-icon toggle-menu-icon">
+                <i class="la la-angle-down"></i>
+              </span>
+              <a href="admin-dashboard-disability.html"
+                ><i class="la la-blind mr-2 text-color-11"></i>Handicaps</a
+              >
+              <ul class="toggle-drop-menu">
+                <li>
+                  <a href="admin-dashboard-disability-add.html"
+                    >Ajouter handicap</a
+                  >
+                </li>
+              </ul>
             </li>
             <li>
               <a href="admin-dashboard-settings.html"
@@ -453,19 +467,27 @@
     <script src="js/jquery.ripples-min.js"></script>
     <script src="js/main.js"></script>
     <script>
-        
+              async function getAccessToken() {
         let headersList = {
-        authorization: 'Bearer ' + localStorage.getItem('admintoken'),
-        'Content-Type': 'application/json',
+          authorization: 'Bearer ' + localStorage.getItem('adminrefreshtoken'),
+        }
+
+        const res6 = await fetch(`http://localhost:3000/refresh/token`, {
+          headers: headersList,
+        })
+        let response6 = await res6.json()
+
+        return response6.data.accessToken
       }
 
   $(document).ready(async () => {
     try {
       var queryString = decodeURIComponent(window.location.search)
           queryString = queryString.substring(8)
-          let headersList = {
-    authorization: 'Bearer ' + localStorage.getItem('admintoken'),
-  }
+          let accessToken = await getAccessToken()
+      let headersList = {
+        authorization: 'Bearer ' + accessToken,
+      }
 
      const res6 = await fetch(
     `http://localhost:3000/Fu4mHX5QN6Jd2mpDIMqsd5cMfdLe/me`+queryString,

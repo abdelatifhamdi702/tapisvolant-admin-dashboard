@@ -117,6 +117,21 @@
                 </li>
               </ul>
             </li>
+            <li>
+              <span class="side-menu-icon toggle-menu-icon">
+                <i class="la la-angle-down"></i>
+              </span>
+              <a href="admin-dashboard-disability.html"
+                ><i class="la la-blind mr-2 text-color-11"></i>Handicaps</a
+              >
+              <ul class="toggle-drop-menu">
+                <li>
+                  <a href="admin-dashboard-disability-add.html"
+                    >Ajouter handicap</a
+                  >
+                </li>
+              </ul>
+            </li>
 
             <li>
               <a href="admin-dashboard-settings.html"
@@ -804,9 +819,22 @@ START DASHBOARD AREA
     <script src="js/main.js"></script>
     <script src="js/bootbox.min.js"></script>
     <script>
-      async function updateAct(id, index) {
+      async function getAccessToken() {
         let headersList = {
-          Authorization: 'Bearer ' + localStorage.getItem('admintoken'),
+          authorization: 'Bearer ' + localStorage.getItem('adminrefreshtoken'),
+        }
+
+        const res6 = await fetch(`http://localhost:3000/refresh/token`, {
+          headers: headersList,
+        })
+        let response6 = await res6.json()
+
+        return response6.data.accessToken
+      }
+      async function updateAct(id, index) {
+        let accessToken = await getAccessToken()
+        let headersList = {
+          Authorization: 'Bearer ' + accessToken,
           'Content-Type': 'application/json',
         }
         var queryString = decodeURIComponent(window.location.search)
@@ -825,7 +853,7 @@ START DASHBOARD AREA
         const res = await response.json()
 
         let headersList2 = {
-          authorization: 'Bearer ' + localStorage.getItem('admintoken'),
+          authorization: 'Bearer ' + accessToken,
         }
         let formData = new FormData()
         let activityImage = document.getElementById('activityImg' + index)
@@ -861,8 +889,9 @@ START DASHBOARD AREA
       })
 
       async function addAct() {
+        let accessToken = await getAccessToken()
         let headersList = {
-          Authorization: 'Bearer ' + localStorage.getItem('admintoken'),
+          Authorization: 'Bearer ' + accessToken,
           'Content-Type': 'application/json',
         }
         var queryString = decodeURIComponent(window.location.search)
@@ -881,7 +910,7 @@ START DASHBOARD AREA
         const res = await response.json()
 
         let headersList2 = {
-          authorization: 'Bearer ' + localStorage.getItem('admintoken'),
+          authorization: 'Bearer ' + accessToken,
         }
         let formData = new FormData()
         let activityImage = document.getElementById('activityImg').files[0]
@@ -903,6 +932,7 @@ START DASHBOARD AREA
       }
 
       async function addDest() {
+        let accessToken = await getAccessToken()
         let DisabilityCategory = ''
         if (document.getElementById('Handicapmoteur').checked) {
           DisabilityCategory += 'Handicap moteur, '
@@ -923,7 +953,7 @@ START DASHBOARD AREA
           DisabilityCategory += 'Handicap psychique, '
         }
         let headersList = {
-          Authorization: 'Bearer ' + localStorage.getItem('admintoken'),
+          Authorization: 'Bearer ' + accessToken,
           'Content-Type': 'application/json',
         }
         var queryString = decodeURIComponent(window.location.search)
@@ -948,7 +978,7 @@ START DASHBOARD AREA
 
         const res = await response.json()
         let headersList2 = {
-          authorization: 'Bearer ' + localStorage.getItem('admintoken'),
+          authorization: 'Bearer ' + accessToken,
         }
         let formData1 = new FormData()
         let formData2 = new FormData()
@@ -992,8 +1022,9 @@ START DASHBOARD AREA
           }
           var queryString = decodeURIComponent(window.location.search)
           queryString = queryString.substring(8)
+          let accessToken = await getAccessToken()
           let headersList = {
-            authorization: 'Bearer ' + localStorage.getItem('admintoken'),
+            authorization: 'Bearer ' + accessToken,
           }
 
           const res6 = await fetch(
