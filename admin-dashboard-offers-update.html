@@ -352,114 +352,11 @@ START DASHBOARD AREA
                             </div>
                           </div>
                           <div class="col-lg-12">
-                            <div class="input-box">
-                              <label class="label-text mb-0 line-height-20"
-                                >Handicaps:
-                              </label>
-                              <p class="font-size-13 mb-3 line-height-20"></p>
-                              <div
-                                id="dis_id0"
-                                class="form-check form-check-inline"
-                              >
-                                <input
-                                  class="form-check-input"
-                                  type="checkbox"
-                                  id="Handicapmoteur"
-                                  value="Handicap moteur"
-                                />
-                                <label
-                                  class="form-check-label"
-                                  for="Handicapmoteur"
-                                >
-                                  Handicap moteur
-                                </label>
-                              </div>
-                              <div
-                                id="dis_id1"
-                                class="form-check form-check-inline"
-                              >
-                                <input
-                                  class="form-check-input"
-                                  type="checkbox"
-                                  id="Handicapsensoriel"
-                                  value="Handicap sensoriel"
-                                />
-                                <label
-                                  class="form-check-label"
-                                  for="Handicapsensoriel"
-                                >
-                                  Handicap sensoriel
-                                </label>
-                              </div>
-                              <div
-                                id="dis_id2"
-                                class="form-check form-check-inline"
-                              >
-                                <input
-                                  class="form-check-input"
-                                  type="checkbox"
-                                  id="Handicapvisuel"
-                                  value="Handicap visuel"
-                                />
-                                <label
-                                  class="form-check-label"
-                                  for="Handicapvisuel"
-                                >
-                                  Handicap visuel
-                                </label>
-                              </div>
-                              <div
-                                id="dis_id3"
-                                class="form-check form-check-inline"
-                              >
-                                <input
-                                  class="form-check-input"
-                                  type="checkbox"
-                                  id="Handicapmental"
-                                  value="Handicap mental"
-                                />
-                                <label
-                                  class="form-check-label"
-                                  for="Handicapmental"
-                                >
-                                  Handicap mental
-                                </label>
-                              </div>
-                              <div
-                                id="dis_id4"
-                                class="form-check form-check-inline"
-                              >
-                                <input
-                                  class="form-check-input"
-                                  type="checkbox"
-                                  id="Handicapcognitif"
-                                  value="Handicap cognitif"
-                                />
-                                <label
-                                  class="form-check-label"
-                                  for="Handicapcognitif"
-                                >
-                                  Handicap cognitif
-                                </label>
-                              </div>
-                              <div
-                                id="dis_id5"
-                                class="form-check form-check-inline"
-                              >
-                                <input
-                                  class="form-check-input"
-                                  type="checkbox"
-                                  id="Handicappsychique"
-                                  value="Handicap psychique"
-                                />
-                                <label
-                                  class="form-check-label"
-                                  for="Handicappsychique"
-                                >
-                                  Handicap psychique
-                                </label>
-                              </div>
-                            </div>
+                            <label class="label-text mb-0 line-height-20"
+                              >Handicaps:
+                            </label>
+                            <p class="font-size-13 mb-3 line-height-20"></p>
+                            <div id="checkboxesDiv" class="input-box"></div>
                           </div>
                           <br />
                           <br />
@@ -862,21 +759,23 @@ START DASHBOARD AREA
         console.log(activityImage)
         formData.append('id', res.data.id)
         formData.append('imgUrl', activityImage)
-        let response2 = await fetch('http://localhost:3000/upload/activity', {
-          method: 'POST',
-          headers: headersList2,
-          body: formData,
-        })
+        if (activityImage) {
+          let response2 = await fetch('http://localhost:3000/upload/activity', {
+            method: 'POST',
+            headers: headersList2,
+            body: formData,
+          })
 
-        const res2 = await response2.json()
-        console.log(res2)
+          const res2 = await response2.json()
+          console.log(res2)
+        }
 
-        if (res2.data) bootbox.alert("L'activité est mise a jour avec succès")
+        if (res.data) bootbox.alert("L'activité est mise a jour avec succès")
       }
 
-      window.onbeforeunload = function () {
+      /*window.onbeforeunload = function () {
         return 'Dude, are you sure you want to leave? Think of the kittens!'
-      }
+      }*/
 
       $('#toggleBtn').click(async (e) => {
         $('#updateTourForm').slideToggle()
@@ -934,23 +833,11 @@ START DASHBOARD AREA
       async function addDest() {
         let accessToken = await getAccessToken()
         let DisabilityCategory = ''
-        if (document.getElementById('Handicapmoteur').checked) {
-          DisabilityCategory += 'Handicap moteur, '
-        }
-        if (document.getElementById('Handicapsensoriel').checked) {
-          DisabilityCategory += 'Handicap sensoriel, '
-        }
-        if (document.getElementById('Handicapvisuel').checked) {
-          DisabilityCategory += 'Handicap visuel, '
-        }
-        if (document.getElementById('Handicapmental').checked) {
-          DisabilityCategory += 'Handicap mental, '
-        }
-        if (document.getElementById('Handicapcognitif').checked) {
-          DisabilityCategory += 'Handicap cognitif, '
-        }
-        if (document.getElementById('Handicappsychique').checked) {
-          DisabilityCategory += 'Handicap psychique, '
+        var ele = document.getElementsByTagName('input')
+        for (var i = 0; i < ele.length; i++) {
+          if (ele[i].type == 'checkbox' && ele[i].checked == true) {
+            DisabilityCategory += ele[i].value + ', '
+          }
         }
         let headersList = {
           Authorization: 'Bearer ' + accessToken,
@@ -988,26 +875,30 @@ START DASHBOARD AREA
         formData1.append('imgUrl', tourImage)
         formData2.append('id', res.data.id)
         formData2.append('coverImgUrl', tourCoverImage)
+        if (tourImage) {
+          let response2 = await fetch('http://localhost:3000/upload/tour', {
+            method: 'POST',
+            headers: headersList2,
+            body: formData1,
+          })
 
-        let response2 = await fetch('http://localhost:3000/upload/tour', {
-          method: 'POST',
-          headers: headersList2,
-          body: formData1,
-        })
+          const res2 = await response2.json()
+          console.log(res2)
+        }
+        if (tourCoverImage) {
+          let response3 = await fetch(
+            'http://localhost:3000/upload/tour/cover',
+            {
+              method: 'POST',
+              headers: headersList2,
+              body: formData2,
+            }
+          )
 
-        const res2 = await response2.json()
-        console.log(res2)
-
-        let response3 = await fetch('http://localhost:3000/upload/tour/cover', {
-          method: 'POST',
-          headers: headersList2,
-          body: formData2,
-        })
-
-        const res3 = await response3.json()
-        console.log(res3)
-        if (res2.data && res3.data)
-          bootbox.alert('Le séjour est ajoutée avec succès')
+          const res3 = await response3.json()
+          console.log(res3)
+        }
+        if (res.data) bootbox.alert('Le séjour est ajoutée avec succès')
       }
 
       $(document).ready(async () => {
@@ -1020,6 +911,31 @@ START DASHBOARD AREA
               .text(res.data[i].city)
             $('#selectDestination').append(option)
           }
+          const response3 = await fetch(`http://localhost:3000/disability/all`)
+          let res3 = await response3.json()
+          console.log(res3)
+          for (i = 0; i < res3.data.length; i++) {
+            window.checkboxesDiv.innerHTML =
+              window.checkboxesDiv.innerHTML +
+              `<div
+                                id="dis_id${res3.data[i].id}"
+                                class="form-check form-check-inline"
+                              >
+                                <input
+                                  class="form-check-input"
+                                  type="checkbox"
+                                  id="${res3.data[i].type}"
+                                  value="${res3.data[i].type}"
+                                />
+                                <label
+                                  class="form-check-label"
+                                  for="${res3.data[i].id}"
+                                >
+                                ${res3.data[i].type}
+                                </label>
+                              </div>`
+          }
+
           var queryString = decodeURIComponent(window.location.search)
           queryString = queryString.substring(8)
           let accessToken = await getAccessToken()
@@ -1052,10 +968,10 @@ START DASHBOARD AREA
           $('#txtPrice').val(response2.data.price)
           let DisabilityCategory = response2.data.acceptedDisabilities
           let Disabilities = DisabilityCategory.split(', ')
-          //console.log(Disabilities)
+          console.log(Disabilities)
           for (d in Disabilities) {
             if (d != Disabilities.length - 1) {
-              Disabilities[d] = Disabilities[d].replace(' ', '')
+              //Disabilities[d] = Disabilities[d].replace(' ', '')
               document.getElementById(Disabilities[d]).checked = true
             }
           }

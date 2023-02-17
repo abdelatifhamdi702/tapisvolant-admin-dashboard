@@ -450,19 +450,19 @@ START DASHBOARD AREA
           document.getElementById('destinationImg').files[0]
         formData.append('id', res.data.id)
         formData.append('destinationImg', destinationImage)
+        if (destinationImage) {
+          let response2 = await fetch(
+            'http://localhost:3000/upload/destination',
+            {
+              method: 'POST',
+              headers: headersList2,
+              body: formData,
+            }
+          )
 
-        let response2 = await fetch(
-          'http://localhost:3000/upload/destination',
-          {
-            method: 'POST',
-            headers: headersList2,
-            body: formData,
-          }
-        )
-
-        const res2 = await response2.json()
-
-        if (res2.data)
+          const res2 = await response2.json()
+        }
+        if (res.data)
           bootbox.alert('la destination a été mise à jour avec succès')
       }
 

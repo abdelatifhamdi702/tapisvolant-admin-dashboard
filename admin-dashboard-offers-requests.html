@@ -413,65 +413,66 @@ START DASHBOARD AREA
         if (res.data) bootbox.alert('la demande a été refusé avec succès')
       }
       $(document).ready(async () => {
-        try {
-          let accessToken = await getAccessToken()
-          let headersList = {
-            authorization: 'Bearer ' + accessToken,
-          }
+        //try {
+        let accessToken = await getAccessToken()
+        let headersList = {
+          authorization: 'Bearer ' + accessToken,
+        }
 
-          const res6 = await fetch(
-            `http://localhost:3000/Fu4mHX5QN6Jd2mpDIMqsd5cMfdLe/me`,
-            { headers: headersList }
-          )
-          let response6 = await res6.json()
+        const res6 = await fetch(
+          `http://localhost:3000/Fu4mHX5QN6Jd2mpDIMqsd5cMfdLe/me`,
+          { headers: headersList }
+        )
+        let response6 = await res6.json()
 
-          $('.AgentnameAI').html(response6.data.username)
-          var path = response6.data.profileImg
-          var path2 = path.replace(/\\/g, '/')
-          $('.ProfileAI').attr('src', 'http://' + path2)
-          var queryString = decodeURIComponent(window.location.search)
-          queryString = queryString.substring(1)
-          const response = await fetch(
-            `http://localhost:3000/booking/?` + queryString,
-            {
-              headers: headersList,
-            }
-          )
-          let res = await response.json()
-          console.log(res)
-          for (i = 0; i < res.data.length; i++) {
-            var path = res.data[i].imgUrl
-            var path2 = 'http://' + path.replace(/\\/g, '/')
-            window.offersList.innerHTML =
-              window.offersList.innerHTML +
-              '<tr> <td>' +
-              res.data[i].Tour.title +
-              '</td> <td>' +
-              res.data[i].Auth.username +
-              '</td> <td>' +
-              res.data[i].Tour.createdAt.substring(0, 10) +
-              '</td> <td>' +
-              res.data[i].Tour.price +
-              '</td> <td>' +
-              res.data[i].status +
-              '</td> <td><a href="' +
-              path2 +
-              '">Reçu</a> </td><td> <div class="table-content"> <a href="#" onclick="acceptOffer(' +
-              "'" +
-              res.data[i].tourId +
-              "','" +
-              res.data[i].authId +
-              "'" +
-              ');" class="theme-btn theme-btn-small mr-2" data-toggle="tooltip" data-placement="top" title="Accepter" ><i class="la la-check"></i ></a> <a href="#" onclick="refuseOffer(' +
-              "'" +
-              res.data[i].tourId +
-              "','" +
-              res.data[i].authId +
-              "'" +
-              ');" class="theme-btn theme-btn-small mr-2" data-toggle="tooltip" data-placement="top" title="Refuser"><i class="la la-times"></i ></a> </div> </td></tr>'
-          }
-        } catch (error) {
-          bootbox.alert(error)
+        $('.AgentnameAI').html(response6.data.username)
+        var path = response6.data.profileImg
+        var path2 = path.replace(/\\/g, '/')
+        $('.ProfileAI').attr('src', 'http://' + path2)
+        var queryString = decodeURIComponent(window.location.search)
+        queryString = queryString.substring(1)
+        let url = ''
+        if (queryString != '') {
+          url = `http://localhost:3000/booking/by/?tourId=` + queryString
+        } else {
+          url = `http://localhost:3000/booking/`
+        }
+        console.log(url)
+        const response = await fetch(url, {
+          headers: headersList,
+        })
+        let res = await response.json()
+        console.log(res)
+        for (i = 0; i < res.data.length; i++) {
+          var path = res.data[i].imgUrl
+          var path2 = 'http://' + path.replace(/\\/g, '/')
+          window.offersList.innerHTML =
+            window.offersList.innerHTML +
+            '<tr> <td>' +
+            res.data[i].Tour.title +
+            '</td> <td>' +
+            res.data[i].Auth.username +
+            '</td> <td>' +
+            res.data[i].Tour.createdAt.substring(0, 10) +
+            '</td> <td>' +
+            res.data[i].Tour.price +
+            '</td> <td>' +
+            res.data[i].status +
+            '</td> <td><a href="' +
+            path2 +
+            '">Reçu</a> </td><td> <div class="table-content"> <a href="#" onclick="acceptOffer(' +
+            "'" +
+            res.data[i].tourId +
+            "','" +
+            res.data[i].authId +
+            "'" +
+            ');" class="theme-btn theme-btn-small mr-2" data-toggle="tooltip" data-placement="top" title="Accepter" ><i class="la la-check"></i ></a> <a href="#" onclick="refuseOffer(' +
+            "'" +
+            res.data[i].tourId +
+            "','" +
+            res.data[i].authId +
+            "'" +
+            ');" class="theme-btn theme-btn-small mr-2" data-toggle="tooltip" data-placement="top" title="Refuser"><i class="la la-times"></i ></a> </div> </td></tr>'
         }
       })
     </script>
