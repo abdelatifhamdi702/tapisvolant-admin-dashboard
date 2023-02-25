@@ -257,6 +257,18 @@ START DASHBOARD AREA
                       <div class="row">
                         <div class="col-lg-12 responsive-column">
                           <div class="input-box">
+                            <label class="label-text">Langue</label>
+                            <div class="form-group select-contain w-100">
+                              <select
+                                class="select-contain-select"
+                                id="selectLangue"
+                              >
+                                <option value="fr">Français</option>
+                                <option value="en">English</option>
+                              </select>
+                            </div>
+                          </div>
+                          <div class="input-box">
                             <label class="label-text">Pays</label>
                             <div class="form-group">
                               <span class="la la-flag form-icon"></span>
@@ -433,6 +445,7 @@ START DASHBOARD AREA
         let bodyContent = JSON.stringify({
           id: queryString,
           city: $('#country').val() + '',
+          langCode: $('#selectLangue').find(':selected').val(),
         })
         let response = await fetch('http://localhost:3000/destination', {
           method: 'PATCH',

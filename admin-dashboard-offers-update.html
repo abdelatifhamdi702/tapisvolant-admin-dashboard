@@ -260,6 +260,18 @@ START DASHBOARD AREA
                         <div class="row">
                           <div class="col-lg-12 responsive-column">
                             <div class="input-box">
+                              <label class="label-text">Langue</label>
+                              <div class="form-group select-contain w-100">
+                                <select
+                                  class="select-contain-select"
+                                  id="selectLangueTour"
+                                >
+                                  <option value="fr">Français</option>
+                                  <option value="en">English</option>
+                                </select>
+                              </div>
+                            </div>
+                            <div class="input-box">
                               <label class="label-text">Titre</label>
                               <div class="form-group">
                                 <span class="la la-tex form-icon"></span>
@@ -561,6 +573,18 @@ START DASHBOARD AREA
                       <div class="row">
                         <div class="col-lg-12 responsive-column">
                           <div class="input-box">
+                            <label class="label-text">Langue</label>
+                            <div class="form-group select-contain w-100">
+                              <select
+                                class="select-contain-select"
+                                id="selectLangueActivity"
+                              >
+                                <option value="fr">Français</option>
+                                <option value="en">English</option>
+                              </select>
+                            </div>
+                          </div>
+                          <div class="input-box">
                             <label class="label-text">Titre</label>
                             <div class="form-group">
                               <span class="la la-flag form-icon"></span>
@@ -740,6 +764,9 @@ START DASHBOARD AREA
           id: id,
           title: $('#txtTitleActivity' + index).val() + '',
           description: $('#txtDescriptionActivity' + index).val() + '',
+          langCode: $('#selectLangueActivity' + index)
+            .find(':selected')
+            .val(),
         })
         let response = await fetch('http://localhost:3000/activity', {
           method: 'PATCH',
@@ -856,6 +883,7 @@ START DASHBOARD AREA
           rating: parseFloat(3.5),
           acceptedDisabilities: DisabilityCategory,
           introduction: $('#txtIntroduction').val(),
+          langCode: $('#selectLangueTour').find(':selected').val(),
         })
         let response = await fetch('http://localhost:3000/tour', {
           method: 'PATCH',
@@ -961,6 +989,7 @@ START DASHBOARD AREA
             { headers: headersList }
           )
           let response2 = await res2.json()
+          console.log(response2)
           let activitiesList = response2.data.Activities
           $('#txtTitle').val(response2.data.title)
           $('#txtDescription').val(response2.data.description)
@@ -992,6 +1021,18 @@ START DASHBOARD AREA
             activitiesDiv += `
             <div class="row">
                         <div class="col-lg-12 responsive-column">
+                          <div class="input-box">
+                              <label class="label-text">Langue</label>
+                              <div class="form-group select-contain w-100">
+                                <select
+                                  class="select-contain-select"
+                                  id="selectLangueActivity${index}"
+                                >
+                                  <option value="fr">Français</option>
+                                  <option value="en">English</option>
+                                </select>
+                              </div>
+                            </div>
                           <div class="input-box">
                             <label class="label-text">Titre</label>
                             <div class="form-group">

@@ -433,7 +433,9 @@ START DASHBOARD AREA
               window.destinationsList.innerHTML +
               '<tr> <td>' +
               res.data[i].type +
-              '</td> <td> <div class="table-content"><a href="#" class="theme-btn theme-btn-small" data-toggle="tooltip" data-placement="top" title="Delete" onclick="deleteDisability(' +
+              '</td> <td><div class="table-content"> <a href="admin-dashboard-disability-update.html?' +
+              res.data[i].id +
+              '" class="theme-btn theme-btn-small mr-2" data-toggle="tooltip" data-placement="top" title="Edit" ><i class="la la-edit"></i ></a> <div class="table-content"><a href="#" class="theme-btn theme-btn-small" data-toggle="tooltip" data-placement="top" title="Delete" onclick="deleteDisability(' +
               "'" +
               res.data[i].id +
               "'" +
